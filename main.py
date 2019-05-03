@@ -1493,8 +1493,9 @@ def get_partner_profile_info():
 
     db_results = partner_db.get_field_partner_profile("group_zipcode", term)
     results = []
-
+    print "db_results: {0}".format(db_results)
     for row in db_results:
+        print "row: {0}".format(row)
         group = okta_util.search_groups(row["okta_group_name"], 1)[0]
         admin_group = okta_util.search_groups("{0}{1}".format(row["okta_group_name"], config.okta["partner_group_filter_suffix"]), 1)[0]
         results.append(
